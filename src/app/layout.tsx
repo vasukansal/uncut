@@ -1,5 +1,6 @@
 import { meta } from '@/lib/metadata';
 import { Rubik, Roboto_Mono } from 'next/font/google';
+import { ThemeProvider } from '@/components/theme-provider';
 import "./globals.css";
 
 export const metadata = meta;
@@ -23,7 +24,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={
         `${rubik.className} ${robotoMono.className}`
-      }>{children}</body>
+      }><ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
